@@ -6,11 +6,11 @@ import (
 	"image"
 	"image/color"
 	"image/gif"
+	"math/rand"
 	"os"
 	"time"
 
 	"github.com/benp98/gogol"
-	"golang.org/x/exp/rand"
 )
 
 var generations int
@@ -49,12 +49,6 @@ func main() {
 
 	randomizeWorld(state)
 
-	//state.SetCell(10, 10, true)
-	//state.SetCell(11, 10, true)
-	//state.SetCell(12, 10, true)
-	//state.SetCell(12, 9, true)
-	//state.SetCell(11, 8, true)
-
 	gifData := new(gif.GIF)
 	gifData.LoopCount = 0
 
@@ -76,7 +70,7 @@ func main() {
 }
 
 func randomizeWorld(state *gogol.State) {
-	rand.Seed(uint64(time.Now().Unix()))
+	rand.Seed(time.Now().Unix())
 
 	modulo := (neighbourRadius * neighbourRadius) + 1
 
